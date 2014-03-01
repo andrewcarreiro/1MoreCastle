@@ -1,0 +1,376 @@
+@import (reference) 'definitions.less';
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+
+.nobr{
+	white-space:nowrap;
+}
+
+
+/* body copy */
+
+body{
+	font-family:'Roboto';
+	font-weight:300;
+	font-size:14px;
+	color:@teal0;
+	background:url(/images/bg.png) center center no-repeat;
+	background-size:cover;
+	line-height:1.4em;
+	background-attachment: fixed;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-weight:900;
+	color:@teal0;
+}
+h1{
+	color:@brandred;
+	font-size:200%;
+}
+
+h2{
+	color:@brandred;
+	font-size:160%;
+}
+
+h3{
+	font-size:140%;
+}
+
+h4{
+	font-size:120%;
+}
+
+h5{
+}
+
+h6{
+	font-size:90%;
+}
+
+
+
+h1,h2,h3,h4,h5,h6,ul,ol,table,img,p,.wp-caption{
+	padding-bottom:1em;
+}
+ul,ol{
+	ul,ol{
+		padding-bottom:0px;
+	}
+}
+
+a{
+	text-decoration:none;
+	font-weight:500;
+	color:@brandred;
+}
+
+img{
+	max-width:100%;
+	height:auto;
+}
+
+ul{
+	margin-left:15px;
+	>li{
+		display:block;
+		&:before{
+			content:"■";
+			color:@brandred;
+			font-size:80%;
+			margin-left:-11px;
+			position:absolute
+		}
+	}
+}
+
+ol{
+	margin-left:15px;
+	counter-reset: li;
+	>li{
+		&:before{
+			counter-increment: li;
+			content:counter(li)+". ";
+			color:@brandred;
+			font-size:80%;
+			margin-left:-11px;
+			position:absolute;
+			font-weight:500;
+		}
+	}
+}
+
+table{
+	width:100%;
+	thead{
+		tr{
+			th{
+				background:@teal0;
+				color:@white;
+				text-align:center;
+				padding:4px;
+				font-weight:500;
+			}
+		}
+	}
+	tbody{
+		tr{
+			&:nth-child(even){
+				td{
+					background:darken(@almostwhite,10%);
+				}
+			}
+			td{
+				text-align:center;
+				padding:4px;
+			}
+		}
+	}
+}
+
+
+/*end body copy*/
+
+.row{
+	width:100%;
+}
+
+
+//start header
+.header{
+	a.logo{
+		background:url(/images/logo.png) center center no-repeat;
+		background-size:contain;
+		display:block;
+	}
+
+	.menubutton{
+		background: url(/images/menu-button.png) center center no-repeat;
+		background-size: contain;
+		width: 8%;
+		padding-top: 8%;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		cursor:pointer;
+	}
+}
+
+
+//end header
+
+
+
+.container{
+	width:100%;
+	max-width:1200px;
+	margin:0 auto;
+	min-height:100%;
+	overflow:hidden;
+}
+
+html, body{
+	min-height:100%;
+	font-size:16px;
+}
+
+
+.post{
+	background:#eeeeee;
+	box-shadow:-1px 1px 0px @teal0, -2px 2px 0px @teal0, -3px 3px 0px @teal0, -4px 4px 0px @teal0, -5px 5px 0px @teal0;
+	overflow:hidden;
+	margin:60px 10px;
+	.postheader{
+		background-size:cover;
+		background-position:center center;
+		background-repeat:no-repeat;
+		width:100%;
+		padding-bottom:56.25%;
+		margin-bottom:30px;
+	}
+
+	article{
+		padding:0px 5% 10px 5%;
+
+		img{
+			width:112%;
+			position:relative;
+			margin-left:-5.6%;	
+			max-width: 112%;
+		}
+	}
+
+	section.byline{
+		padding:5%;
+		background:darken(@teal0,7%);
+		color:@white;
+
+		h4{
+			color:@white;
+			font-weight:400;
+			text-transform:uppercase;
+		}
+
+		p{
+			font-style:italic;
+		}
+
+		img{
+			float:left;
+			padding-bottom:0px;
+			margin:0px 15px 15px 0px;
+			border:3px solid darken(@almostwhite,40%);
+		}
+	}
+
+	section.related{
+		margin-top:30px;
+		.clearfix();
+		h6{
+			padding-left:5%;
+			font-size:120%;
+			color:@brandred;
+		}
+		>div{
+			font-size:80%;
+			line-height:1.2em;
+			width:33.33%;
+			float:left;
+			background:darken(@almostwhite,10%);
+			>div{
+				padding:15px;
+			}
+		}
+	}
+}
+
+
+.mainmenu{
+	position:relative;
+	overflow:hidden;
+	padding-top:56.25%;
+	width:100%;
+	.featuredgroup{
+		width:270%;
+		position:absolute;
+		height: 100%;
+		top: 0;
+		background:@brandred;
+		>a{
+			position:absolute;
+			display:block;
+			height:100%;
+			width:33.33%;
+			left:0%;
+			overflow:hidden;
+
+			&:nth-child(2){left:33.33%;}
+			&:nth-child(3){left: 66.64%;width: 33.36%;}
+
+			&:hover{
+				.bg{
+					opacity:0.75;
+					-webkit-transform:scale(1.1);
+					-moz-transform:scale(1.1);
+					transform:scale(1.1);
+				}
+			}
+
+			.bg{
+				-webkit-transform:scale(1);
+				-moz-transform:scale(1);
+				transform:scale(1);
+				background-position:center center;
+				background-size:cover;
+				opacity:0.99;
+				transition:250ms opacity ease-in-out, 250ms transform ease-in-out;
+				-moz-transition:250ms opacity ease-in-out, 250ms -moz-transform ease-in-out;
+				-webkit-transition:250ms opacity ease-in-out, 250ms -webkit-transform ease-in-out;
+				position:absolute;
+				width:100%;
+				height:100%;
+			}
+
+			.cover{
+				position:absolute;
+				bottom:0;
+				background:rgba(0,0,0,0.65);
+				color:@white;
+				padding:10px;
+				font-weight:100;
+				.gametitle{
+					font-size:11px;
+				}
+				.posttitle{
+					font-size:25px;
+					line-height: 27px;
+					font-style:italic;
+				}
+				.author{
+					text-align:right;
+					font-style:italic;
+					font-size:14px;
+				}
+			}
+		}
+	}
+}
+
+footer.mainfooter{
+	background: @darkgrey;
+	padding:30px 10px;
+	>div{
+		column-count:2;
+		-moz-column-count:2;
+		-webkit-column-count:2;
+		>div{
+			display:inline-block;
+
+			h4{
+				color:@teal3;
+				font-weight:600;
+				padding-bottom:0px;
+				text-transform:uppercase;
+				margin-left:3px;
+			}
+			ul{
+				margin-left:0px;
+				li{
+					&:before{
+						content:"";
+					}
+
+					a{
+						display:block;
+						color:@almostwhite80opacity;
+						font-weight:300;
+						padding:3px;
+						&:hover{
+							background:@teal1;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+aside.sidebar{
+	background:@almostwhite;
+	padding:30px 10px;
+
+	h4{
+
+	}
+
+	img{
+		width:100%;
+	}
+}
+
+
+
+
+.desktoponly{display:none;}
