@@ -9,7 +9,7 @@
 
 	<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
-	<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('stylesheet_url') ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url') ?>" />
 	<?php wp_head(); ?>
 </head>
 <body>
@@ -22,7 +22,7 @@
 		<div>
 			<div class="whitebg"></div>
 			<div class="header">
-				<a class="logo" href="#"></a>
+				<a class="logo" href="<?php echo(home_url()); ?>"></a>
 				<form class="search desktoponly">
 					<div>
 						<input type="text" placeholder="search"/>

@@ -127,6 +127,7 @@
 			}
 			$stringToPrint .= '</div></a>';
 
+
 			echo($stringToPrint);
 		}
 	}
@@ -135,19 +136,14 @@
 
 //queue up all JS
 	//all JS is minified into script.js, but we still need jquery
+	//fuck it
+	/*
 	function omc_javascript_enqueue(){
-		wp_enqueue_script( 
-			'omc_mainjs', 	//how it will be referred to later
-			get_template_directory_uri()+'script.js', 	//the url
-			array('jquery'),	//dependencies
-			false,	//file version
-			true	//whether it should be linked in the footer
-		);
-
+		wp_enqueue_script('omc_mainjs', get_template_directory_uri().'/script.js', array('jquery'),false,true);
 	}
 
 	add_action('wp_enqueue_scripts', 'omc_javascript_enqueue');
-
+	*/
 
 //add theme support for various features
 	add_theme_support('post-thumbnails');

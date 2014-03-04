@@ -1,10 +1,8 @@
 		</div>
 	</div>
 	<?php get_template_part('footermenu'); ?>
-	<!--<script src="js/jquery-2.0.2.min.js"></script>
-	<script src="js/iscroll.js"></script>
-	<script src="js/main.js"></script>-->
 	<?php wp_footer(); ?>
+	<script src="<?php bloginfo('template_url') ?>/script.js"></script>
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <!--<script>
 	(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
