@@ -132,6 +132,32 @@
 		}
 	}
 
+//Get 3 other posts from the same series.
+	function omc_get_posts_from_series($currentPostid, $seriesname){
+		$query = new WP_Query( array(
+				'post__not_in' => array($currentPostid),
+				//Order & Orderby Parameters
+				'order'               => 'DESC',
+				'orderby'             => 'rand',
+				//Pagination Parameters
+				'posts_per_page'         => 3,
+				'tax_query' => array(
+					array(
+						'taxonomy'         => 'series',
+						'field'            => 'name',
+						'terms'            => array($seriesname)
+					)
+				)		
+			)
+		);
+
+		if($query->post_count > 2){
+			return $query;	
+		}else{
+			return false;
+		}
+		
+	}
 
 
 //queue up all JS

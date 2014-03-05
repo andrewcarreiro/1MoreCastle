@@ -17,7 +17,7 @@ body{
 	color:@teal0;
 	background:url(./images/bg.png) center center no-repeat;
 	background-size:cover;
-	line-height:1.4em;
+	line-height:1.6em;
 	background-attachment: fixed;
 }
 
@@ -238,9 +238,11 @@ html, body{
 		margin-top:30px;
 		.clearfix();
 		h6{
-			padding-left:5%;
-			font-size:120%;
+			padding-left:2%;
+			font-size:150%;
 			color:@brandred;
+			font-style:italic;
+			text-transform: uppercase;
 		}
 		>div{
 			font-size:80%;
@@ -249,10 +251,38 @@ html, body{
 			float:left;
 			background:darken(@almostwhite,10%);
 			>div{
-				padding:15px;
+				padding: 5%;
+				a{
+					position:relative;
+					display: block;
+					overflow:hidden;
+					div{
+						width: 100%;
+						padding-bottom: 100%;
+						background-size:cover;
+						background-position:center center;
+					}
+					span{
+						display:block;
+						background:rgba(0,0,0,0.65);
+						color:@white;
+						width:96%;
+						padding:5px;
+						bottom:0px;
+						position:absolute;
+						z-index:1;
+						font-size: 14px;
+						line-height: 1.4em;
+						font-style: italic;
+					}
+				}
 			}
 		}
 	}
+}
+
+aside.comments-template{
+	padding:50px 2% 20px 2%;
 }
 
 
