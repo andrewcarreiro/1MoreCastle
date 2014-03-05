@@ -1,60 +1,43 @@
 <?php get_header(); ?>
-<div class="content">
-	<div class="post">
-		<div class="postheader" style="background-image:url(images/test-post-header.jpg);"></div>
-		<article>
-			<div class="postcontent">
-				
-			</div>
-		</article>
-		<section class="byline">
-			<img src="http://1morecastle.com/wp-content/uploads/userphoto/22.thumbnail.jpg" alt="EricHunter" width="100" height="100" class="photo">							<h4>Eric Hunter</h4>
-			<p>Eric M Hunter is a writer, storyteller and retro gamer living in the Cincinnati area. Follow as he deconstructs the human condition and other things <a href="http://www.ericmhunter.net">www.ericmhunter.net</a>.</p>
-			<a href="#">See all posts by this author</a>
-		</section>
-		<section class="related series">
-			<h6>Read more of [SERIES NAME]</h6>
-			<div>
-				<div>
-					<a href="#"><img src="images/test-inner-post.jpg"/></a>
-					This would be the title of the post.
+<div class="content list">
+	<?php if(have_posts()) : while(have_posts()) : the_post();?>
+	<div class="postcontainer">
+		<div class="post">
+			<a href="<?php the_permalink(); ?>">
+			<?php
+				the_post_thumbnail('large', array(
+					'class' => 'postheader'		
+				));
+			?>
+			</a>
+			<article>
+				<div class="postcontent">
+					<?php
+						$series = get_the_terms($post->ID, 'series');
+						$seriesTitle = false;
+						if($series != false){
+							foreach($series as $ser){
+								if($ser->name != ""){
+									$seriesTitle = $ser->name;
+									echo '<h2 class="series"><a href="'.get_bloginfo('url').'/series/'.$ser->slug.'/">'.$seriesTitle.'</a></h2>';
+
+									break;
+								}
+							}
+						}
+					?>
+					<h1><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h1>
+					<?php the_content('Read More'); ?>
 				</div>
-			</div>
-			<div>
-				<div>
-					<a href="#"><img src="images/test-inner-post.jpg"/></a>
-					This would be the title of the post.
-				</div>
-			</div>
-			<div>
-				<div>
-					<a href="#"><img src="images/test-inner-post.jpg"/></a>
-					This would be the title of the post.
-				</div>
-			</div>
-		</section>
-		<section class="related site">
-			<h6>Similar articles</h6>
-			<div>
-				<div>
-					<a href="#"><img src="images/test-inner-post.jpg"/></a>
-					This would be the title of the post.
-				</div>
-			</div>
-			<div>
-				<div>
-					<a href="#"><img src="images/test-inner-post.jpg"/></a>
-					This would be the title of the post.
-				</div>
-			</div>
-			<div>
-				<div>
-					<a href="#"><img src="images/test-inner-post.jpg"/></a>
-					This would be the title of the post.
-				</div>
-			</div>
-		</section>
+			</article>
+		</div>
 	</div>
+	<?php endwhile; else: ?>
+	<div class="post">
+		<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+	</div>
+	<?php endif; ?>
+	<?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?>
 </div>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

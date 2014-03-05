@@ -37,7 +37,7 @@
 			);
 
 			foreach($allAuthors as $author){
-				echo("<li><a href='".home_url()."/authors/".$author->data->user_nicename."'>".$author->data->display_name."</a></li>");
+				echo("<li><a href='".home_url()."/author/".$author->data->user_nicename."'>".$author->data->display_name."</a></li>");
 			}
 		}
 	//Consoles
@@ -196,5 +196,6 @@
 		'hierarchical' => true,
 		'rewrite' => true
 	));
+
 
 ?>

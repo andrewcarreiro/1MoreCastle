@@ -28,19 +28,26 @@ h1,h2,h3,h4,h5,h6{
 h1{
 	color:@brandred;
 	font-size:200%;
+	line-height: 1.1em;
+	a{
+		font-weight:inherit;
+	}
 }
 
 h2{
 	color:@brandred;
 	font-size:160%;
+	line-height: 1.1em;
 }
 
 h3{
 	font-size:140%;
+	line-height: 1.1em;
 }
 
 h4{
 	font-size:120%;
+	line-height: 1.1em;
 }
 
 h5{
@@ -48,11 +55,12 @@ h5{
 
 h6{
 	font-size:90%;
+	line-height: 1.1em;
 }
 
 
 
-h1,h2,h3,h4,h5,h6,ul,ol,table,img,p,.wp-caption{
+h1,h2,h3,h4,h5,h6,ul,ol,table,img,p{
 	padding-bottom:1em;
 }
 ul,ol{
@@ -176,12 +184,11 @@ html, body{
 	font-size:16px;
 }
 
-
 .post{
 	background:#eeeeee;
 	box-shadow:-1px 1px 0px @teal0, -2px 2px 0px @teal0, -3px 3px 0px @teal0, -4px 4px 0px @teal0, -5px 5px 0px @teal0;
 	overflow:hidden;
-	margin:60px 10px;
+	margin: 20px 10px;
 	h2.series{
 		font-size: 18px;
 		font-style: italic;
@@ -202,11 +209,39 @@ html, body{
 	article{
 		padding:0px 5% 10px 5%;
 
+		strong{
+			font-weight:bold;
+		}
+
+		em{
+			font-style:italic;
+		}
+
 		img{
-			width:112%;
+			width:111.2%;
 			position:relative;
 			margin-left:-5.6%;	
-			max-width: 112%;
+			max-width: 111.2%;
+		}
+
+		div.wp-caption{
+			width:111.2% !important;
+			position:relative;
+			margin-left:-5.6%;	
+			max-width: 111.2%;
+			background:@teal0;
+			color:#FFF;
+			margin-bottom:30px;
+
+			img{
+				width:100%;
+				margin-left:0px;
+				padding-bottom:0px;
+			}
+
+			p{
+				padding:5px 5% 15px 5%;
+			}
 		}
 	}
 
@@ -236,9 +271,9 @@ html, body{
 
 	section.related{
 		margin-top:30px;
+		padding:0px 5%;
 		.clearfix();
 		h6{
-			padding-left:2%;
 			font-size:150%;
 			color:@brandred;
 			font-style:italic;
