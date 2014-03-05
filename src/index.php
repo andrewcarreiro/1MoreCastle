@@ -37,7 +37,11 @@
 		<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 	</div>
 	<?php endif; ?>
-	<?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?>
+	<?php if(function_exists('wp_pagenavi')): ?>
+		<div class="pagenavicontainer">
+			<?php wp_pagenavi(); ?>
+		</div>
+	<?php endif; ?>
 </div>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
