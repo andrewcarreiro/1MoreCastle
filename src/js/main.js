@@ -36,10 +36,11 @@ jQuery(function($){
 	var mobilefeaturescroll;
 	function mobileFeatures(){
 		mobilefeaturescroll = new IScroll($('.mainmenu').get(0), {
-			click:true,
-			scrollX : true,
-			scrollY : false,
-			bounce: false
+			click 			: true,
+			scrollX 		: true,
+			scrollY 		: false,
+			bounce			: false,
+			eventPassthrough: true
 		});
 	}
 
@@ -71,19 +72,55 @@ jQuery(function($){
 			});
 	}
 
+	function mobileHeaderLinks(){
+		var hold_y_start;
+		var hold_y_end;
+		$('.post>a').on('click', function(e){
+			if(isMobile()){
+				e.preventDefault();	
+			}
+		});
+		$('.post>a').on('touchstart', function(e){
+			hold_y_start = hold_y_end = e.originalEvent.touches[0].clientY;
+		});
 
+		$('.post>a').on('touchmove', function(e){
+			hold_y_end = e.originalEvent.touches[0].clientY;
+		});
+
+		$('.post>a').on('touchend', function(e){
+			var diff = Math.abs(hold_y_end - hold_y_start);
+			if(diff < $(window).height()*0.1){
+				document.location = $(this).attr('href');
+				//$('body').css('background','rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')')
+			}
+		});
+	}
+
+	var mobileflag;
+	function isMobile(){
+		if(mobileflag.is(':visible')){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 	var mainnav;
 	$(document).ready(function(){
+		mobileflag = $("#mobileflag");
 		mainnav = $('.mainnav');
 		$('a.submit').linkSubmitter();
-		if($("#mobileflag").is(':visible')){
+		if(isMobile()){
 			mobileMenu();
+			mobileHeaderLinks();
 			mobileFeatures();
 		}else{
 			desktopMenu();
 		}
 		allMenu();
+
+		
 	});
 
 });

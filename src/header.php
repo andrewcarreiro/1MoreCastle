@@ -12,7 +12,13 @@
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url') ?>" />
 	<?php wp_head(); ?>
 </head>
-<body>
+<?php
+	$headerClasses = "";
+	$headerClasses .= is_single() ? "single " : "";
+	$headerClasses .= is_home() ? "home " : "";
+?>
+
+<body class="<?php echo($headerClasses); ?>">
 <!--[if lte IE 8]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->

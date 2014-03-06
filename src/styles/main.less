@@ -15,10 +15,8 @@ body{
 	font-weight:300;
 	font-size:14px;
 	color:@teal0;
-	background:url(./images/bg.png) center center no-repeat;
-	background-size:cover;
+	background:url(./images/bg.png) center center repeat;
 	line-height:1.6em;
-	background-attachment: fixed;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -243,6 +241,50 @@ html, body{
 				padding:5px 5% 15px 5%;
 			}
 		}
+
+		blockquote{
+			background:lighten(@lightgrey,40%);
+			width:111.2% !important;
+			position:relative;
+			margin-left:-5.6%;
+			max-width: 111.2%;
+			box-sizing:border-box;
+			padding:5% 10%;
+			font-size: 30px;
+			font-style: italic;
+			line-height:35px;
+			margin-bottom:15px;
+			&:before, &:after{
+				content:'“';
+				position:absolute;
+				font-size:100px;
+				top:0;
+				left:0;
+				display:block;
+				padding:20px;
+				line-height:0px;
+				color:lighten(@lightgrey,30%);
+				font-family:"Arial","Helvetica",sans-serif;
+				font-weight:bold;
+				margin: 5% 2%;
+			}
+			&:after{
+				content:'”';
+				bottom:0;
+				right:0;
+				top:auto;
+				left:auto;
+				margin:1% 6%;
+			}
+			p{
+				position:relative;
+				z-index:1;
+				&:last-of-type{
+					padding-bottom:0px;
+				}
+			}
+			
+		}
 	}
 
 	section.byline{
@@ -393,19 +435,42 @@ aside.comments-template{
 		}
 	}
 }
+
 .pagenavicontainer{
-	clear:both;
 	padding:50px 0px;
+	clear:both;
+	height:80px;
 	.wp-pagenavi{
 		text-align: center;
-		font-size:20px;
+		font-size: 50px;
 		a,span{
-			display:inline-block;
+			display:none;
 			background:@brandred;
+			width: 50px;
+			height: 50px;
+			line-height: 40px;
 			margin:0px 5px;
 			padding:5px 10px;
 			color:#FFF;
 			border:none;
+			&.previouspostslink{
+				display:inline-block;
+				float:left;
+				margin-left:2%;
+			}
+			&.nextpostslink{
+				display:inline-block;
+				float:right;
+				margin-right:2%;
+			}
+		}
+		span{
+			background:fade(@brandred,50%);
+		}
+		a{
+			&:hover{
+				background:lighten(@brandred,10%);
+			}
 		}
 	}
 }
