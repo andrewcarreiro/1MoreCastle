@@ -22,9 +22,9 @@
 					</ul>
 				</div>
 				<div>
-					<h4>Consoles</h4>
+					<h4>Categories</h4>
 					<ul>
-						<?php omc_getNavConsoles(); ?>
+						<?php omc_getNavCategories(); ?>
 					</ul>
 				</div>
 				<div>

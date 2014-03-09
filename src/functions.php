@@ -40,16 +40,12 @@
 				echo("<li><a href='".home_url()."/author/".$author->data->user_nicename."'>".$author->data->display_name."</a></li>");
 			}
 		}
-	//Consoles
-		//browse by games in a particular console? <-could be an easy custom taxonomy.
-		//wp_nav_menu('main_nav_consoles');
-		function omc_getNavConsoles(){
-			$allConsoles = wp_get_nav_menu_items(get_nav_menu_locations()->main_nav_consoles->ID);
-			if($allConsoles == false){
-				return;
-			}
-			foreach($allConsoles as $console){
-				echo("<li><a href='".$console->url."'>".$console->post_title."</a></li>");
+	//Categories
+		//browse by category
+		function omc_getNavCategories(){
+			$allCategories = get_categories();
+			foreach($allCategories as $category){
+				echo("<li><a href='".home_url()."/category/".$category->slug."'>".$category->name."</a></li>");
 			}
 		}
 	//Who We Are

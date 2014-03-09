@@ -3,8 +3,8 @@
 	<div class="postcontainer title">
 		<div class="post">
 			<div>
-				<span>Search Results for:</span>
-				<h1>"<?php echo $_GET["s"]; ?>"</h1>
+				<span>Viewing Category:</span>
+				<h1><?php single_cat_title(); ?></h1>
 			</div>
 		</div>
 	</div>

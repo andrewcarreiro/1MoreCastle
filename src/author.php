@@ -1,10 +1,13 @@
 <?php get_header(); ?>
 <div class="content list search">
-	<div class="postcontainer title">
+	<div class="postcontainer title author">
 		<div class="post">
 			<div>
-				<span>Search Results for:</span>
-				<h1>"<?php echo $_GET["s"]; ?>"</h1>
+				<section class="byline">
+					<?php echo(get_avatar(get_the_author_meta('ID'))); ?>
+					<h1><?php the_author_meta('first_name'); ?> <?php the_author_meta('last_name'); ?></h1>
+					<p><?php the_author_meta('description'); ?></p>
+				</section>
 			</div>
 		</div>
 	</div>
