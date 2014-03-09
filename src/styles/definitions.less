@@ -30,3 +30,12 @@
   &:before { content: ''; display: block; }
   &:after { content: ''; display: table; clear: both; }
 }
+
+
+//transform shorthand
+.transform(@thing){
+	-webkit-transform:@thing;
+	-moz-transform:@thing;
+	transform:@thing;
+}
+	
