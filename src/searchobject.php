@@ -20,13 +20,33 @@ var searchObject = [<?php
 	}
 
 	//get all authors
-	$allAuthors = get_users(
+	$admins = get_users(
 		array(
 			'orderby' => 'post_count',
 			'order'   => 'DESC',
-			'role'	  => 'contributor'
+			'role'	  => 'administrator',
+			'exclude' => array(1)
 		)
 	);
+
+	$editors = get_users(
+		array(
+			'orderby' => 'post_count',
+			'order'   => 'DESC',
+			'role'	  => 'editor'
+		)
+	);
+
+	$contributors = get_users(
+		array(
+			'orderby' => 'post_count',
+			'order'   => 'DESC',
+			'role'	  => 'contributor',
+			'exclude' => array(14)
+		)
+	);
+
+	$allAuthors = array_merge($admins,$editors,$contributors);
 
 	foreach($allAuthors as $author){
 		array_push($searchArray, array(

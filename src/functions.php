@@ -28,13 +28,33 @@
 	//Authors
 		//list all users with permission level "contributor"
 		function omc_getAllAuthors(){
-			$allAuthors = get_users(
+			$admins = get_users(
 				array(
 					'orderby' => 'post_count',
 					'order'   => 'DESC',
-					'role'	  => 'contributor'
+					'role'	  => 'administrator',
+					'exclude' => array(1)
 				)
 			);
+
+			$editors = get_users(
+				array(
+					'orderby' => 'post_count',
+					'order'   => 'DESC',
+					'role'	  => 'editor'
+				)
+			);
+
+			$contributors = get_users(
+				array(
+					'orderby' => 'post_count',
+					'order'   => 'DESC',
+					'role'	  => 'contributor',
+					'exclude' => array(14)
+				)
+			);
+
+			$allAuthors = array_merge($admins,$editors,$contributors);
 
 			foreach($allAuthors as $author){
 				echo("<li><a href='".home_url()."/author/".$author->data->user_nicename."'>".$author->data->display_name."</a></li>");

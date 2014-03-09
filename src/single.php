@@ -30,14 +30,11 @@
 				<?php the_content(); ?>
 			</div>
 		</article>
-		
-		<section class="nextlink">
-			<span>Next up</span>
-			<?php next_post_link(
-				"%link",
-				"%title"
-			); ?>
-		</section>
+			
+		<?php previous_post_link(
+			'<section class="nextlink"><span>Next up</span>%link</section>',
+			"%title"
+		); ?>
 
 
 		<?php if(strlen(get_the_author_meta('first_name')) > 0):?>
