@@ -10,6 +10,7 @@
 	<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url') ?>" />
+	<?php get_template_part('searchObject'); ?>
 	<?php wp_head(); ?>
 </head>
 <?php
@@ -28,12 +29,13 @@
 		<div>
 			<div class="whitebg"></div>
 			<div class="header">
-				<a class="logo" href="<?php echo(home_url()); ?>"></a>
-				<form class="search desktoponly">
+				<a class="logo" href="<?php echo(home_url('/')); ?>"></a>
+				<form role="search" method="get" action="<?php echo home_url( '/' ); ?>" class="search desktoponly">
 					<div>
-						<input type="text" placeholder="search"/>
+						<input type="text" autocomplete="off" name="s" id="s" placeholder="search"/>
 					</div>
 					<a href="#" class="submit"></a>
+					<div class="suggestedresults" id="suggestedresults"></div>
 				</form>
 				<div class="menubutton">
 				</div>

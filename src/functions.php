@@ -21,7 +21,7 @@
 			);
 
 			foreach($allSeries as $series){
-				echo("<li><a href='".home_url()."/series/".$element->slug."'>".$element->name."</a></li>");
+				echo("<li><a href='".home_url()."/series/".$series->slug."'>".$series->name."</a></li>");
 			}
 		}
 		

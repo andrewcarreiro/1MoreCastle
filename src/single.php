@@ -7,6 +7,7 @@
 				'class' => 'postheader'		
 			));
 		?>
+		<?php get_template_part('share'); ?>
 		<article>
 			<div class="postcontent">
 				<?php

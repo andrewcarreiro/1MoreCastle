@@ -4,7 +4,8 @@ jQuery(function($){
 		if($(this).length > 0){
 			$(this).each(function(i,ele){
 				var dis = $(ele);
-				dis.on('click', function(){
+				dis.on('click', function(e){
+					e.preventDefault();
 					dis.closest('form').submit();
 				});
 			});
@@ -106,6 +107,83 @@ jQuery(function($){
 		}
 	}
 
+
+	function fancySearch(){
+		var suggestedresults = $('#suggestedresults');
+		var target_link = false;
+		var max_links = 0;
+
+		function update_target_link(){
+			suggestedresults.find('a.current').removeClass('current');
+			if(target_link !== false){
+				suggestedresults.find('a').eq(target_link).addClass('current');
+			}
+		}
+
+		$('.search.desktoponly input').on('keyup', function(e){
+			
+			if($(this).val().length == 0){
+				suggestedresults.html("");
+				return;
+			}else if(e.keyCode == 38){
+				//up
+				e.preventDefault();
+				if(target_link !== false){
+					if(target_link == 0){
+						target_link = false;
+					}else{
+						target_link--;	
+					}
+				}
+				update_target_link();
+			}else if(e.keyCode == 40){
+				//down
+				e.preventDefault();
+				if(target_link === false){
+					target_link = 0;
+				}else if(target_link < max_links){
+					target_link++;
+				}
+				update_target_link();
+			}else{
+				var query = $(this).val().toLowerCase();
+
+				var results = "";
+				var j=0;
+				for(var i=0; i<searchObject.length; i++){
+					if(searchObject[i].name.toLowerCase().indexOf(query) > -1){
+						j++;
+						results += "<a class='"+searchObject[i].class+"' href='"+searchObject[i].url+"'>"+searchObject[i].name+"</a>";
+						if(j > 10){
+							break;
+						}
+					}
+				}
+				max_links = j;
+				results += "<a href='"+$(this).closest('form').attr('action')+"?s="+$(this).val()+"'>Search for \""+$(this).val()+"\"</a>";
+
+				suggestedresults.html(results);
+			}			
+		});
+
+		$('.search.desktoponly').on('submit', function(e){
+			if(target_link !== false){
+				e.preventDefault();
+				document.location = suggestedresults.find('a').eq(target_link).attr('href');
+			}
+		});
+
+		suggestedresults.hover(
+			function(){
+				target_link = false;
+				update_target_link();
+			},
+			function(){
+
+			}
+		);
+	}
+
 	var mainnav;
 	$(document).ready(function(){
 		mobileflag = $("#mobileflag");
@@ -119,8 +197,10 @@ jQuery(function($){
 			desktopMenu();
 		}
 		allMenu();
-
+		fancySearch();
 		
 	});
+
+
 
 });

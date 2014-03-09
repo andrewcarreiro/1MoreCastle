@@ -3,9 +3,9 @@
 	<div class="menuarea">
 		<div>
 			<div class="inner">
-				<form class="search mobileonly">
+				<form role="search" method="get" action="<?php echo home_url( '/' ); ?>"  class="search mobileonly">
 					<div>
-						<input type="text" placeholder="Search"/>
+						<input type="text" name="s" id="s" placeholder="Search"/>
 					</div>
 					<a href="#" class="submit"></a>
 				</form>
