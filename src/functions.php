@@ -198,4 +198,13 @@
 	));
 
 
+//Responsive YouTube Embed
+	function omc_responsive_youtube($attr,$content=null){
+		parse_str(parse_url($content,PHP_URL_QUERY),$ytvars);
+		return '<div class="youtube-container"><iframe src="http://www.youtube.com/embed/'.$ytvars["v"].'" frameborder="0" width="560" height="315"></iframe></div>';
+	}
+
+	add_shortcode('youtube', 'omc_responsive_youtube');
+
+
 ?>
