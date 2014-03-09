@@ -224,6 +224,9 @@ html, body{
 			position:relative;
 			margin-left:-5.6%;	
 			max-width: 111.2%;
+			&[title="More..."]{
+				display:none;
+			}
 		}
 
 		div.wp-caption{
@@ -288,6 +291,42 @@ html, body{
 				}
 			}
 			
+		}
+		//fix for audio player
+		.haiku-container ul>li:before{
+			content:"";
+		}
+
+		//styles for poll box
+		.widget-poll{
+			margin: 50px 0px;
+			background: @darkgrey;
+			box-shadow: -1px 1px 0px 0px @teal3, -2px 2px 0px 0px @teal3, -3px 3px 0px 0px @teal3, -4px 4px 0px 0px @teal3, -5px 5px 0px 0px @teal3;
+			padding: 20px 5%;
+			color:#FFF;
+			table tbody tr{
+				&:nth-child(even) td{
+					background:none;
+				}
+				td{
+					text-align:left;
+				}
+			}
+			
+
+			.widget-poll-question{
+				font-size: 30px;
+				font-weight: 100;
+				line-height: 2em;
+			}
+
+			.poll-wh-style{
+				margin:20px 0px;
+			}
+
+			a{
+				color:@teal3;
+			}
 		}
 	}
 
