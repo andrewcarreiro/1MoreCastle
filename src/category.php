@@ -8,7 +8,9 @@
 			</div>
 		</div>
 	</div>
+	<?php omc_get_ad('topcontent'); ?>
 	<?php get_template_part('index-loop'); ?>
+	<?php omc_get_ad('bottomcontent'); ?>
 	<?php if(function_exists('wp_pagenavi')): ?>
 		<div class="pagenavicontainer">
 			<?php wp_pagenavi(); ?>

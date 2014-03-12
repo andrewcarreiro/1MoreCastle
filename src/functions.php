@@ -5,7 +5,8 @@
 		'featured_items' => 'Featured items',
 		'main_nav_around' => 'Around the Site',
 		'main_nav_who' => 'Who We Are',
-		'main_nav_projects' => 'Projects &amp; Friends'
+		'main_nav_projects' => 'Projects &amp; Friends',
+		'featured_series' => 'Featured Series'
 	));
 
 
@@ -244,4 +245,41 @@
 	    return $content;
 	}
 
+
+//ad blocks
+	function omc_get_ad($get_ad){
+		
+		switch($get_ad){
+			case "topcontent":
+				$colour = "green";
+				break;
+			case "bottomcontent":
+				$colour = "orange";
+				break;
+			case "sidebar":
+				$colour = "pink";
+				break;
+		}
+		?>
+		<div class="mad <?php echo $get_ad ?>">
+			<div style="padding:10%;background-color:<?php echo $colour ?>">
+			Ad block - <?php echo $get_ad ?>
+			</div>
+		</div>
+		<?php
+	}
+
+
+
+//featured series in sidebar
+	function omc_featured_series(){
+		$allFeaturedSeries = wp_get_nav_menu_items(get_nav_menu_locations()['featured_series']);
+		if($allFeaturedSeries == false){
+			return;
+		}
+		//choose random one
+		$featuredseries = $allFeaturedSeries[array_rand($allFeaturedSeries,1)];
+
+		//var_dump($featuredseries);
+	}
 ?>

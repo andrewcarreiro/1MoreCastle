@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 <div class="content">
 	<?php if(have_posts()) : while(have_posts()) : the_post();?>
+	<?php omc_get_ad('topcontent'); ?>
 	<div class="post">
 		<?php
 			the_post_thumbnail('large', array(
@@ -75,6 +76,7 @@
 				?>
 			</section>
 		<?php endif; endif; ?>
+		<?php omc_get_ad('bottomcontent'); ?>
 		
 
 		<aside class="comments-template">
