@@ -15,12 +15,7 @@
 			</a>
 		</div>
 	</div>
-	<div>
-		<h3>Featured Series:</h3>
-		<div>
-			<?php omc_featured_series(); ?>
-		</div>
-	</div>
+	<?php omc_featured_series(); ?>
 
 	<div>
 		<div>

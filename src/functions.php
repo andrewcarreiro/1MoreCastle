@@ -280,6 +280,13 @@
 		//choose random one
 		$featuredseries = $allFeaturedSeries[array_rand($allFeaturedSeries,1)];
 
-		//var_dump($featuredseries);
+		?>
+			<div class="featured-sidebar">
+				<h3>Featured Series:</h3>
+				<div>
+					<a href="<?php echo $featuredseries->url; ?>" class="<?php echo $featuredseries->classes[0]; ?>"></a>
+				</div>
+			</div>
+		<?php
 	}
 ?>
