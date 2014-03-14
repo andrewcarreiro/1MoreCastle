@@ -58,7 +58,10 @@
 			$allAuthors = array_merge($admins,$editors,$contributors);
 
 			foreach($allAuthors as $author){
-				echo("<li><a href='".home_url()."/author/".$author->data->user_nicename."'>".$author->data->display_name."</a></li>");
+				//var_dump($author);
+				$firstname = get_the_author_meta('first_name',$author->ID);
+				$lastname = get_the_author_meta('last_name',$author->ID);
+				echo("<li><a href='".home_url()."/author/".$author->data->user_nicename."'>".$firstname." ".$lastname."</a></li>");
 			}
 		}
 	//Categories
