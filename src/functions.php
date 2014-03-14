@@ -289,4 +289,57 @@
 			</div>
 		<?php
 	}
+
+
+//ANALYTICS
+	function omc_analytics(){
+		$analyticsString = "";
+		if(!current_user_can('edit_post')){
+			$analyticsString .= "<script>";
+			
+			$analyticsString = $analyticsString."(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');";
+			$analyticsString = $analyticsString."function ga();";
+			$analyticsString .= "ga('create', 'UA-30208407-1', '1morecastle.com');ga('send', 'pageview');";
+
+			if(have_posts()) : while(have_posts()) : the_post();
+				
+				if(is_singular()){
+					
+					//author
+					$author = get_the_author_meta('user_nicename');
+					$author = strtolower($author);
+					$author = str_replace(" ","-",$author);
+
+					$analyticsString .= "ga('set', 'dimension1', '".$author."');";
+					
+					//series
+					$terms = get_terms(array('series'));
+					if(count($terms) > 0){
+						$analyticsString .= "ga('set', 'dimension2', '".$terms[0]->slug."');";
+					}
+					
+					//category
+					$category = get_the_category();
+					if(count($category) > 0){
+						$allCats = array();
+						for($i=0;$i<count($category);$i++){
+							array_push($allCats, $category[$i]->slug);
+						}
+						$analyticsString .= "ga('set', 'dimension3', '".implode(',',$allCats)."');";
+					}
+
+					//page type
+					$analyticsString .= "ga('set', 'dimension4', 'single');";
+				}else{
+					//page type
+					$analyticsString .= "ga('set', 'dimension4', 'multi');";
+				}
+			
+			endwhile; endif;
+
+			$analyticsString .= "</script>";
+		}
+
+		echo $analyticsString;
+	}
 ?>

@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url') ?>" />
 	<?php get_template_part('searchObject'); ?>
 	<?php wp_head(); ?>
+	<?php omc_analytics();?>
 </head>
 <?php
 	$headerClasses = "";
