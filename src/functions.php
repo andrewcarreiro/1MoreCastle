@@ -72,47 +72,57 @@
 				echo("<li><a href='".home_url()."/category/".$category->slug."'>".$category->name."</a></li>");
 			}
 		}
+	//helper function
+		function omc_get_menu_items($menuName){
+			$loc = get_nav_menu_locations();
+			$menu = wp_get_nav_menu_object( $loc[ $menuName ] );
+			return wp_get_nav_menu_items($menu);
+		}
+
 	//Who We Are
 		//custom menu
 		//wp_nav_menu('main_nav_who');
 		function omc_getNavWho(){
-			$allWho = wp_get_nav_menu_items(get_nav_menu_locations()->main_nav_who->ID);
+			$allWho = omc_get_menu_items('main_nav_who');
 			if($allWho == false){
 				return;
 			}
 			foreach($allWho as $who){
-				echo("<li><a href='".$who->url."'>".$who->post_title."</a></li>");
+				$title = strlen($who->post_title) != 0 ? $who->post_title : $who->title;
+				echo("<li><a href='".$who->url."'>".$title."</a></li>");
 			}
 		}
 	//Around the Site
 		//custom menu
 		//wp_nav_menu('main_nav_around');
 		function omc_getNavAround(){
-			$allAround = wp_get_nav_menu_items(get_nav_menu_locations()->main_nav_around->ID);
+			$allAround = omc_get_menu_items('main_nav_around');
 			if($allAround == false){
 				return;
 			}
 			foreach($allAround as $around){
-				echo("<li><a href='".$around->url."'>".$around->post_title."</a></li>");
+				$title = strlen($around->post_title) != 0 ? $around->post_title : $around->title;
+				echo("<li><a href='".$around->url."'>".$title."</a></li>");
 			}
 		}
 	//Projects &amp; Friends
 		//custom menu
 		//wp_nav_menu('main_nav_projects');
 		function omc_getNavProjects(){
-			$allProjects = wp_get_nav_menu_items(get_nav_menu_locations()->main_nav_projects->ID);
+			$allProjects = omc_get_menu_items('main_nav_projects');
 			if($allProjects == false){
 				return;
 			}
 			foreach($allProjects as $project){
-				echo("<li><a href='".$project->url."'>".$project->post_title."</a></li>");
+				$title = strlen($project->post_title) != 0 ? $project->post_title : $project->title;
+				echo("<li><a href='".$project->url."'>".$title."</a></li>");
 			}
 		}
 
 
 //Featured items function
 	function omc_featured_items(){
-		$allFeaturedItems = wp_get_nav_menu_items(get_nav_menu_locations()['featured_items']);
+		$allFeaturedItems = omc_get_menu_items('featured_items');
 		if($allFeaturedItems == false){
 			return;
 		}
@@ -121,9 +131,10 @@
 			$thepost   = get_post( $allFeaturedItems[$i]->object_id );
 			$link 	   = $allFeaturedItems[$i]->url;
 
-			$bgimg 	   = wp_get_attachment_image_src( get_post_thumbnail_id( $thepost->ID ) )[0];
+			$bgimg 	   = wp_get_attachment_image_src( get_post_thumbnail_id( $thepost->ID ) );
+			$bgimg     = $bgimg[0];
 			$gametitle = null;
-			$posttitle = $thepost->post_title;
+			$posttitle = strlen($thepost->post_title) != 0 ? $thepost->post_title : $thepost->title;
 			
 			$author_object = get_userdata( $thepost->post_author );
 			if($author_object->data->user_login != "Admin"){
@@ -266,7 +277,7 @@
 		?>
 		<div class="mad <?php echo $get_ad ?>">
 			<div style="">
-			Ad block - <?php echo $get_ad ?>
+			
 			</div>
 		</div>
 		<?php
@@ -276,7 +287,7 @@
 
 //featured series in sidebar
 	function omc_featured_series(){
-		$allFeaturedSeries = wp_get_nav_menu_items(get_nav_menu_locations()['featured_series']);
+		$allFeaturedSeries = omc_get_menu_items('featured_series');
 		if($allFeaturedSeries == false){
 			return;
 		}

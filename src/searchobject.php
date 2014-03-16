@@ -50,7 +50,7 @@ var searchObject = [<?php
 
 	foreach($allAuthors as $author){
 		array_push($searchArray, array(
-				$author->data->display_name,
+				get_the_author_meta('first_name',$author->ID)." ".get_the_author_meta('last_name',$author->ID),
 				home_url()."/author/".$author->data->user_nicename,
 				"author"
 			)

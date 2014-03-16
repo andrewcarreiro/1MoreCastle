@@ -19,6 +19,7 @@
 
 		.menuarea{
 			min-height:40px;
+			background:@brandred;
 			position:relative;
 			overflow:hidden;
 			>div{
@@ -51,6 +52,7 @@
 							padding:10px;
 							top:0;
 							box-sizing:border-box;
+							-moz-box-sizing: border-box;
 							background:@brandred;
 							cursor: default;
 						}
@@ -73,11 +75,13 @@
 									color:#FFF;
 									opacity:0.9;
 									display:block;
-									padding:5px 10px;
+									padding:10px;
 									-webkit-column-break-inside: avoid;
 									-moz-column-break-inside: avoid;
 									column-break-inside: avoid;
 									font-weight:300;
+									line-height:120%;
+
 									&:hover{
 										background:@teal2;
 									}
@@ -145,6 +149,7 @@
 						color:#FFF;
 						font-style:italic;
 						width:90%;
+						height:18px;
 						&:focus{
 							outline:0;
 						}
@@ -197,8 +202,7 @@
 			}
 		}
 		.mainmenu{
-			margin-top:37px;
-			padding-top:18.25%;
+			padding-top: 22.25%;
 			box-shadow:-1px 1px 0px #780404, -2px 2px 0px #780404, -3px 3px 0px #780404, -4px 4px 0px #780404, -5px 5px 0px #780404, -6px 6px 0px #780404;
 
 			.featuredgroup{
@@ -323,6 +327,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00eeeeee', e
 				position: absolute;
 				padding: 50px 10px 10px 10px;
 				box-sizing: border-box;
+				-moz-box-sizing: border-box;
 				bottom: 0;
 				text-align: right;
 			}

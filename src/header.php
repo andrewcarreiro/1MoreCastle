@@ -10,7 +10,7 @@
 	<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url') ?>" />
-	<?php get_template_part('searchObject'); ?>
+	<?php get_template_part('searchobject'); ?>
 	<?php wp_head(); ?>
 	<?php omc_analytics();?>
 </head>

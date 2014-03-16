@@ -181,7 +181,6 @@ strong{
 	max-width:1200px;
 	margin:0 auto;
 	min-height:100%;
-	overflow:hidden;
 }
 
 html, body{
@@ -257,6 +256,11 @@ html, body{
 	article{
 		padding:0px 5% 10px 5%;
 
+		&.page{
+			padding:40px 5% 30px 5%;
+		}
+		
+
 		strong{
 			font-weight:bold;
 		}
@@ -309,6 +313,7 @@ html, body{
 			position:relative;
 			margin:20px 0px 50px -5.6%;
 			max-width: 111.2%;
+			-moz-box-sizing: border-box;
 			box-sizing:border-box;
 			padding:5% 10%;
 			font-size: 30px;
@@ -451,6 +456,7 @@ html, body{
 						color:@white;
 						width:95%;
 						padding:8px;
+						-moz-box-sizing: border-box;
 						box-sizing:border-box;
 						bottom:2.5%;
 						position:absolute;
@@ -489,8 +495,8 @@ aside.comments-template{
 			left:0%;
 			overflow:hidden;
 
-			&:nth-child(2){left:33.33%;}
-			&:nth-child(3){left: 66.64%;width: 33.39%;}
+			&:nth-child(2){left:33.33%;width:33.4%;}
+			&:nth-child(3){left: 66.64%;width: 33.5%;}
 
 			&:hover{
 				.bg{
@@ -519,7 +525,8 @@ aside.comments-template{
 				color:@white;
 				padding:10px;
 				font-weight:100;
-				width: 100%;
+				width: 100.5%;
+				-moz-box-sizing: border-box;
 				box-sizing: border-box;
 				.gametitle{
 					font-size:11px;
