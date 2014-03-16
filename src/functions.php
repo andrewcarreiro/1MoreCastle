@@ -265,7 +265,7 @@
 		}
 		?>
 		<div class="mad <?php echo $get_ad ?>">
-			<div style="padding:10%;background-color:<?php echo $colour ?>">
+			<div style="">
 			Ad block - <?php echo $get_ad ?>
 			</div>
 		</div>

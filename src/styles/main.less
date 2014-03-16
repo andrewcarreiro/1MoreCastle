@@ -270,6 +270,14 @@ html, body{
 			position:relative;
 			margin-left:-5.6%;	
 			max-width: 111.2%;
+			&.fixedwidth{
+				width: inherit;
+				margin: 0 auto;
+				border: 1px solid @teal3;
+				box-shadow:-1px 1px 0px 0px @teal0,-2px 2px 0px 0px @teal0,-3px 3px 0px 0px @teal0;
+				padding-bottom: 0px;
+				display: block;
+			}
 			&[title="More..."]{
 				display:none;
 			}
