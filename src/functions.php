@@ -138,7 +138,10 @@
 			
 			$author_object = get_userdata( $thepost->post_author );
 			if($author_object->data->user_login != "Admin"){
-				$author    = $author_object->display_name;
+				$firstname = get_the_author_meta('first_name',$author_object->ID);
+				$lastname = get_the_author_meta('last_name',$author_object->ID);
+
+				$author    = $firstname." ".$lastname;
 			}else{
 				$author    = null;
 			}
@@ -319,7 +322,6 @@
 			$analyticsString .= "<script>";
 			
 			$analyticsString = $analyticsString."(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-30208407-1', '1morecastle.com');ga('send', 'pageview');";
-			$analyticsString .= "ga('create', 'UA-30208407-1', '1morecastle.com');ga('send', 'pageview');";
 
 			if(have_posts()) : while(have_posts()) : the_post();
 				
