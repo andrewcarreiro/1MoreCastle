@@ -43,7 +43,7 @@
 				<?php echo(get_avatar(get_the_author_meta('ID'))); ?>
 				<h4><?php the_author_meta('first_name'); ?> <?php the_author_meta('last_name'); ?></h4>
 				<p><?php the_author_meta('description'); ?></p>
-				<a href="<?php echo(home_url().'/authors/'.get_the_author_meta('nicename')); ?>">See all posts by <?php the_author_meta('first_name'); ?> <?php the_author_meta('last_name'); ?></a>
+				<a href="<?php echo(home_url().'/author/'.get_the_author_meta('nicename')); ?>">See all posts by <?php the_author_meta('first_name'); ?> <?php the_author_meta('last_name'); ?></a>
 			</section>
 		<?php endif; ?>
 
