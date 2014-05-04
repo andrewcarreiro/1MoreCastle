@@ -299,7 +299,8 @@
 		if(!current_user_can('edit_post')){
 			$analyticsString .= "<script>";
 			
-			$analyticsString = $analyticsString."(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-30208407-1', '1morecastle.com');ga('send', 'pageview');";
+			$analyticsString = $analyticsString."(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-30208407-1', '1morecastle.com');";
+			$analyticsInner = array();
 			if(is_singular()){
 				
 				$id = get_the_ID();
@@ -309,13 +310,15 @@
 				$author = get_the_author_meta('user_nicename',$post->post_author);
 				$author = strtolower($author);
 				$author = str_replace(" ","-",$author);
+				$author = "'dimension1' : '".$author."'";
 
-				$analyticsString .= "ga('set', 'dimension1', '".$author."');";
+				array_push($analyticsInner, $author);
 				
 				//series
 				$terms = wp_get_post_terms( $id, 'series');
 				if(count($terms) > 0){
-					$analyticsString .= "ga('set', 'dimension2', '".$terms[0]->slug."');";
+					$dimension2 = $terms[0]->slug;
+					array_push($analyticsInner, "'dimension2' : '".$dimension2."'");
 				}
 				
 				//category
@@ -325,15 +328,28 @@
 					for($i=0;$i<count($category);$i++){
 						array_push($allCats, $category[$i]->slug);
 					}
-					$analyticsString .= "ga('set', 'dimension3', '".implode(',',$allCats)."');";
+					$allCategories = implode(',',$allCats);
+					array_push($analyticsInner, "'dimension3' : '".$allCategories."'");
 				}
 
 				//page type
-				$analyticsString .= "ga('set', 'dimension4', 'single');";
+				array_push($analyticsInner, "'dimension4' : 'single'");
 			}else{
 				//page type
-				$analyticsString .= "ga('set', 'dimension4', 'multi');";
+				array_push($analyticsInner, "'dimension4' : 'multi'");
 			}
+
+			$analyticsString .= "ga('send', 'pageview', {";
+			for($i=0; $i<count($analyticsInner); $i++){
+				if($i == count($analyticsInner)-1){
+					$analyticsString .= $analyticsInner[$i];
+				}else{
+					$analyticsString .= $analyticsInner[$i].",";
+				}
+				
+			}
+			$analyticsString .= "});";
+			
 			
 
 
