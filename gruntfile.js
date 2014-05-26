@@ -55,6 +55,12 @@ module.exports = function(grunt){
 				cwd    : 'src/', 
 				src    : 'images/**',
 				dest   : './1MoreCastle2/'
+			},
+			fonts : {
+				expand : true,
+				cwd    : 'src/', 
+				src    : 'fonts/**',
+				dest   : './1MoreCastle2/'
 			}
 		},
 
@@ -67,8 +73,8 @@ module.exports = function(grunt){
 
 	});
 
-	grunt.registerTask('dev',['less:dev', 'concat:dev', 'copy:php','copy:images']);
-	grunt.registerTask('deploy',['less:deploy','uglify:prod', 'copy:php']);
+	grunt.registerTask('dev',['less:dev', 'concat:dev', 'copy:php','copy:images','copy:fonts']);
+	grunt.registerTask('deploy',['less:deploy','uglify:prod', 'copy:php','copy:images','copy:fonts']);
 
 
 
