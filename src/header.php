@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>1 More Castle <?php wp_title(); ?></title>
-	<meta name="description" content="Community driven retro gaming site. News, videos, nostalgia and humour!">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
