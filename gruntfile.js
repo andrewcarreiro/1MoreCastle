@@ -8,7 +8,7 @@ module.exports = function(grunt){
 					dumpLineNumbers : false
 				},
 				files: {
-					'./1MoreCastle2/style.css':['src/styles/fonts.less', 'src/styles/main.less', 'src/styles/mobile.less','src/styles/desktop.less']
+					'./1MoreCastle2/style.css':['src/styles/fonts.less', 'src/styles/main.less', 'src/styles/mobile.less','src/styles/desktop.less','src/styles/woocommerce.less']
 				}
 			},
 			deploy: {
