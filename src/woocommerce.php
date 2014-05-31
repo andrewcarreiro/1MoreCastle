@@ -1,3 +1,4 @@
+<?php $noAd = true; ?>
 <?php get_header(); ?>
 <div class="content">
 	<?php omc_get_ad('topcontent'); ?>
@@ -5,7 +6,6 @@
 		<article class="store">
 			<div class="postcontent">
 				<?php woocommerce_content(); ?>
-				<?php get_template_part('share'); ?>
 			</div>
 		</article>
 		<?php omc_get_ad('bottomcontent'); ?>

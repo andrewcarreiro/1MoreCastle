@@ -250,7 +250,10 @@
 
 //ad blocks
 	function omc_get_ad($get_ad){
-		
+		if($noAd==true){
+			return false;
+		}
+
 		switch($get_ad){
 			case "topcontent":
 				$colour = "green";
