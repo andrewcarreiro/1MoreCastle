@@ -256,20 +256,27 @@
 
 		switch($get_ad){
 			case "topcontent":
-				$colour = "green";
+				$ad_id = "5138522927";
 				break;
 			case "bottomcontent":
-				$colour = "orange";
+				$ad_id = "6615256121";
 				break;
 			case "sidebar":
-				$colour = "pink";
+				$ad_id = "9568722524";
 				break;
 		}
 		?>
 		<div class="mad <?php echo $get_ad ?>">
-			<div style="">
-			
-			</div>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- bottom content -->
+			<ins class="adsbygoogle"
+			     style="display:block"
+			     data-ad-client="ca-pub-0878802325861700"
+			     data-ad-slot="<?php echo $ad_id ?>"
+			     data-ad-format="auto"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
 		</div>
 		<?php
 	}

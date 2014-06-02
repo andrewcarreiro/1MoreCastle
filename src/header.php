@@ -1,3 +1,4 @@
+<?php $noAd = false; ?>
 <!DOCTYPE html>
 <html class="no-js">
 <head>
