@@ -294,7 +294,7 @@
 
 		?>
 			<div class="featured-sidebar">
-				<h3>Featured Series:</h3>
+				<h3>Featured Series</h3>
 				<div>
 					<a href="<?php echo $featuredseries->url; ?>" class="<?php echo $featuredseries->classes[0]; ?>"></a>
 				</div>
