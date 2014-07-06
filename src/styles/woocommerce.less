@@ -232,6 +232,48 @@
 				}
 			}
 		}
+
+		>.postcontent>ul.products{
+			.clearfix();
+			margin-left:0px;
+			li{
+				width: 49%;
+				display: inline-block;
+				margin-bottom: 50px;
+				&:before{content:"";}
+
+				a{
+					margin: 0% 2%;
+					background: @darkgrey;
+					display:block;
+					overflow:hidden;
+					padding:2%;
+					h3{
+						color:#FFF;
+						font-weight:200;
+					}
+					img{
+						width:106%;
+						margin-left:0px;
+						padding-bottom:5px;
+						margin: -3% 0 0 -3%;
+					}	
+				}
+			}
+		}
 		
+	}
+}
+
+.checkout{
+	#payment{
+		color:#FFF;
+		.payment_methods{
+			img{
+				width:auto;
+				height:auto;
+				padding:0px;
+			}
+		}
 	}
 }
