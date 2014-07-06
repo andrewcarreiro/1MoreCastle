@@ -28,21 +28,21 @@
 					</ul>
 				</div>
 				<div>
-					<h4>Who We Are</h4>
+					<h4><?php echo omc_get_menu_title('main_nav_custom1') ?></h4>
 					<ul>
-						<?php omc_getNavWho(); ?>
+						<?php omc_getNavCustom(1); ?>
 					</ul>
 				</div>
 				<div>
-					<h4>Around the Site</h4>
+					<h4><?php echo omc_get_menu_title('main_nav_custom2') ?></h4>
 					<ul>
-						<?php omc_getNavAround(); ?>
+						<?php omc_getNavCustom(2); ?>
 					</ul>
 				</div>
 				<div>
-					<h4>Projects &amp; Friends</h4>
+					<h4><?php echo omc_get_menu_title('main_nav_custom3') ?></h4>
 					<ul>
-						<?php omc_getNavProjects(); ?>
+						<?php omc_getNavCustom(3); ?>
 					</ul>
 				</div>
 			</div>

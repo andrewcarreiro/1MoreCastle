@@ -3,9 +3,9 @@
 //register user-editable menus
 	register_nav_menus(array(
 		'featured_items' => 'Featured items',
-		'main_nav_around' => 'Around the Site',
-		'main_nav_who' => 'Who We Are',
-		'main_nav_projects' => 'Projects &amp; Friends',
+		'main_nav_custom1' => 'Custom Main Nav 1',
+		'main_nav_custom2' => 'Custom Main Nav 2',
+		'main_nav_custom3' => 'Custom Main Nav 3',
 		'featured_series' => 'Featured Series'
 	));
 
@@ -73,49 +73,28 @@
 			}
 		}
 	//helper function
-		function omc_get_menu_items($menuName){
+		function omc_get_menu_object($menuName){
 			$loc = get_nav_menu_locations();
-			$menu = wp_get_nav_menu_object( $loc[ $menuName ] );
+			return wp_get_nav_menu_object( $loc[ $menuName ] ); 
+		}
+		function omc_get_menu_items($menuName){
+			$menu = omc_get_menu_object($menuName);
 			return wp_get_nav_menu_items($menu);
 		}
+		function omc_get_menu_title($menuName){
+			$menu = omc_get_menu_object($menuName);
+			return $menu->name;
+		}
 
-	//Who We Are
-		//custom menu
-		//wp_nav_menu('main_nav_who');
-		function omc_getNavWho(){
-			$allWho = omc_get_menu_items('main_nav_who');
+
+		function omc_getNavCustom($id){
+			$allWho = omc_get_menu_items('main_nav_custom'.$id);
 			if($allWho == false){
 				return;
 			}
 			foreach($allWho as $who){
 				$title = strlen($who->post_title) != 0 ? $who->post_title : $who->title;
 				echo("<li><a href='".$who->url."'>".$title."</a></li>");
-			}
-		}
-	//Around the Site
-		//custom menu
-		//wp_nav_menu('main_nav_around');
-		function omc_getNavAround(){
-			$allAround = omc_get_menu_items('main_nav_around');
-			if($allAround == false){
-				return;
-			}
-			foreach($allAround as $around){
-				$title = strlen($around->post_title) != 0 ? $around->post_title : $around->title;
-				echo("<li><a href='".$around->url."'>".$title."</a></li>");
-			}
-		}
-	//Projects &amp; Friends
-		//custom menu
-		//wp_nav_menu('main_nav_projects');
-		function omc_getNavProjects(){
-			$allProjects = omc_get_menu_items('main_nav_projects');
-			if($allProjects == false){
-				return;
-			}
-			foreach($allProjects as $project){
-				$title = strlen($project->post_title) != 0 ? $project->post_title : $project->title;
-				echo("<li><a href='".$project->url."'>".$title."</a></li>");
 			}
 		}
 
