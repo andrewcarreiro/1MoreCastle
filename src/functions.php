@@ -198,6 +198,9 @@
 		$contributor->add_cap('upload_files');
 	}
 
+//unfuck galleries
+	add_filter( 'use_default_gallery_style', '__return_false' );
+
 //series Taxonomy
 	register_taxonomy('series', 'post', array(
 		'label' => 'Article Series',
