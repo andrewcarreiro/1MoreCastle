@@ -337,6 +337,66 @@ html, body{
 			dl{
 				margin-bottom:20px;
 			}
+
+			&.gallery-columns-9{
+				.zoom-area{
+					overflow:hidden;
+					padding-bottom:20px;
+					position:relative;
+					>div>a{
+						opacity:0;
+						display:block;
+						position:absolute;
+						&.active{
+							opacity:1;
+							position:static;
+						}
+					}
+					>a{
+						position:absolute;
+						left:-3px;
+						top:50%;
+						margin-top:-25px;
+						height:50px;
+						background:@brandred;
+						color:#FFF;
+						display:none;
+						line-height:50px;
+						padding:0px 20px 0px 26px;
+						box-shadow: 1px 1px @darkred, 2px 2px @darkred, 3px 3px @darkred;
+						.transform(translateX(-200px));
+						&:hover{
+							background:darken(@brandred,5%);
+						}
+
+						&.active{display:block;}
+						&.next{
+							.transform(translateX(200px));
+							padding:0px 26px 0px 20px;
+							left:auto;
+							right:-3px;
+							box-shadow: -1px 1px @darkred, -2px 2px @darkred, -3px 3px @darkred;
+						}
+					}
+
+					&:hover>a{
+						.transform(translateX(0px));
+						&.next{
+							.transform(translateX(0px));
+						}
+					}
+				}
+				.zoom-gallery-nav{
+					overflow-x:scroll;
+					>div{.clearfix();}
+					dl{
+						float:left;
+						dt{
+							padding: 0px 2%;
+						}
+					}
+				}
+			}
 		}
 
 		blockquote{

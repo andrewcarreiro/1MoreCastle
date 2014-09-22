@@ -1,5 +1,84 @@
 jQuery(function($){
 
+	$.fn.expandoGallery = function(){
+		var itemsPerPane = 3;
+		$(this).each(function(i,ele){
+			var dis = $(ele);
+			var items = dis.find('.gallery-item');
+
+			dis.find('br').remove();
+			dis.prepend("<div class='zoom-area'><div></div><a class='next' href='#'>Next</a><a class='prev' href='#'>Previous</a></div>");
+			var zoom_area = dis.children('.zoom-area').children('div');
+			var next_btn = dis.find('a.next');
+			var prev_btn = dis.find('a.prev');
+
+			var num_panes = Math.ceil(items.length / itemsPerPane);
+			var pane_container_width = (num_panes * 100);
+			var widthPerItem = 100 / (itemsPerPane * num_panes);
+			items.wrapAll("<div class='zoom-gallery-nav'><div style='width:"+pane_container_width+"%;'></div></div>");
+			
+			var imageMap = [];
+			var currentImage = 0;
+			items.each(function(i,ele){
+				$(ele).css('width',widthPerItem+"%");
+				imageMap.push($(ele).find('a').attr('href'));
+				$(ele).find('a').on('click', function(e){
+					e.preventDefault();
+					load_image(i);
+				});
+			});
+
+			next_btn.on('click', function(e){
+				e.preventDefault();
+				if(currentImage < imageMap.length){
+					currentImage++;
+					load_image(currentImage);
+				}
+			});
+
+			prev_btn.on('click', function(e){
+				e.preventDefault();
+				if(currentImage > 0){
+					currentImage--;
+					load_image(currentImage);
+				}
+			});
+
+			function load_image(num){
+				var outputHTML = "";
+				outputHTML+=image_output(num,true);
+				zoom_area.children().remove();
+				zoom_area.html(outputHTML);
+
+				var img = zoom_area.find('img');
+				img.load(function(e){
+					zoom_area.css('height', img.height()+"px");
+				});
+
+				if(num == 0){
+					next_btn.addClass('active');
+					prev_btn.removeClass('active');
+				}else if(num == imageMap.length-1){
+					next_btn.removeClass('active');
+					prev_btn.addClass('active');
+				}else{
+					next_btn.addClass('active');
+					prev_btn.addClass('active');
+				}
+
+				currentImage = num;
+			}
+
+			function image_output(num,active){
+				var outputClass = active ? "active" : "";
+				return "<a class='"+outputClass+"' href='"+imageMap[num]+"'><img src='"+imageMap[num]+"'/></a>";
+			}
+
+			load_image(0);
+		});
+	}
+
+
 	$.fn.linkSubmitter = function(){
 		if($(this).length > 0){
 			$(this).each(function(i,ele){
@@ -213,7 +292,7 @@ jQuery(function($){
 		}
 		allMenu();
 		fancySearch();
-		
+		$('.gallery.gallery-columns-9').expandoGallery();
 	});
 
 
