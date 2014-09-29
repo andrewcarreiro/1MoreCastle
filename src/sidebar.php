@@ -1,5 +1,12 @@
 <aside class="sidebar">
 	<div>
+		<div>
+			<a href="http://steamcommunity.com/groups/1MoreCastle" class="outboundtrack">
+				<img src="<?php bloginfo('template_url'); ?>/images/cta/steam.jpg"/>
+			</a>
+		</div>
+	</div>
+	<div>
 		<h3>Get Involved at 1 More Castle!</h3>
 		<div>
 			<a href="<?php bloginfo('url'); ?>/contribution-guidelines/">
