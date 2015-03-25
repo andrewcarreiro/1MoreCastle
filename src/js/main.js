@@ -282,8 +282,10 @@ jQuery(function($){
 		$(this).each(function(i,ele) {
 			var dis = $(ele);
 			dis.on('click', function(e) {
-				e.preventDefault();
-				ga('send', 'event', 'outbound', 'click', dis.attr('href'), { hitCallback : function () { document.location.href = dis.attr('href'); } });
+				if(typeof(ga) === "function"){
+					e.preventDefault();
+					ga('send', 'event', 'outbound', 'click', dis.attr('href'), { hitCallback : function () { document.location.href = dis.attr('href'); } });
+				}
 			});
 		});
 	}
