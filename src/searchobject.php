@@ -57,9 +57,9 @@ var searchObject = [<?php
 		);
 	}
 
-
-	foreach($searchArray as $element){
-		echo("{'name' : '".$element[0]."','url' : '".$element[1]."','class' : '".$element[2]."'},");
+	for($i=0; $i<count($searchArray); $i++){
+		if($i != 0){ echo(","); }
+		echo("{'name' : '".addslashes($searchArray[$i][0])."','url' : '".addslashes($searchArray[$i][1])."','class' : '".addslashes($searchArray[$i][2])."'}");
 	}
 	
 	
