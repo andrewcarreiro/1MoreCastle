@@ -1,8 +1,8 @@
 <aside class="sidebar">
 	<div>
 		<div>
-			<a href="http://steamcommunity.com/groups/1MoreCastle" class="outboundtrack">
-				<img src="<?php bloginfo('template_url'); ?>/images/cta/steam.jpg"/>
+			<a href="http://reviewagreatgameday.com" class="outboundtrack">
+				<img src="<?php bloginfo('template_url'); ?>/images/cta/raggd-sidebar.jpg"/>
 			</a>
 		</div>
 	</div>
