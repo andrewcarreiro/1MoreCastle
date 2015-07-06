@@ -238,6 +238,7 @@ function woocommerce_support() {
 
 //ad blocks
 	function omc_get_ad($get_ad){
+		return false; // no ads ever now
 		if($noAd==true){
 			return false;
 		}
