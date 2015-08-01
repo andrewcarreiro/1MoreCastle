@@ -24,12 +24,12 @@
 				<?php omc_getNavCustom(1); ?>
 			</ul>
 		</div>
-		<div>
+		<!--<div>
 			<h4><?php echo omc_get_menu_title('main_nav_custom2') ?></h4>
 			<ul>
 				<?php omc_getNavCustom(2); ?>
 			</ul>
-		</div>
+		</div>-->
 		<div>
 			<h4><?php echo omc_get_menu_title('main_nav_custom3') ?></h4>
 			<ul>
